@@ -1,48 +1,46 @@
 = randomizer
 
-* http://github.com/canavese/randomizer
+The purpose of this gem is to generate realistic test data.
 
-== DESCRIPTION:
+== Users
 
-Generates random data, particularly useful for user simulation.
+Generate a random user like so:
 
-== FEATURES/PROBLEMS:
+  u = RandomUser.new
 
-* In progress... not ready for public consumption.
+The following fields are available (all except the name are lazily-loaded):
 
-== SYNOPSIS:
+* first_name, last_name, full_name: Chosen from lists of common first and last names in the United States.
+* nickname: short one-word all-lowercase name appropriate for a username/login/handle, based on real name.
+* password: random eight characters.
+* email: email address based on nickname and common email domains.
+* avatar_url: URL to an avatar image on allavatars.com.
 
-  FIX (code sample of usage)
+If a nickname or email address is taken, you can regenerate them:
 
-== REQUIREMENTS:
+  u.regenerate_nickname
+  u.regenerate_email
 
-* FIX (list of requirements)
+== Random text
 
-== INSTALL:
+Generate a random text like so:
 
-* FIX (sudo gem install, anything else)
+  g = MarkovTextGenerator.new
+  g.random(2)
 
-== LICENSE:
+This will generate two sentences of text based on the Markov algorithm.  The initializer accepts any sufficiently-long
+string to be used as a pattern.  The gem includes Aesop's fairy tales (used by default), Alice in Wonderland, the
+Adventures of Sherlock Holmes, and Latin gibberish (lorem ipsum...).
 
-(The MIT License)
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
 
-Copyright (c) 2009 Paul Canavese
+== Copyright
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Copyright (c) 2009 Paul Canavese. See LICENSE for details.

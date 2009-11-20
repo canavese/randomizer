@@ -20,7 +20,7 @@ class NameGenerator
   end  
 
   def random_first_name(options = {})
-    first_name = case options[:gender]
+    case options[:gender]
       when 'm', 'male' then @male_first_names.random
       when 'f', 'female' then @female_first_names.random
       else @first_names.random
