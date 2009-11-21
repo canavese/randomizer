@@ -1,6 +1,5 @@
 require 'net/http'
-require 'rubygems'
-require 'hpricot'
+require 'nokogiri'
 
 class AllAvatarsSite
 
@@ -17,9 +16,9 @@ class AllAvatarsSite
     while @unused_avatar_urls.empty?
       path = "/avatars/showgallery.php?si=&perpage=18&sort=6&cat=all&ppuser="
       response = Net::HTTP.get_response("www.allavatars.com", path).body
-      doc = Hpricot(response)
-      doc.search("img") do |img|
-        source = img.attributes['src']
+      doc = Nokogiri::HTML(response)
+      (doc/'img').each do |img|
+        source = img['src']
         if source =~ %r{http://www.allavatars.com/avatars/data/.*} && !@used_avatar_urls.member?(source)
           @unused_avatar_urls << source
         end

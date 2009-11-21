@@ -12,6 +12,7 @@ begin
     gem.authors = ["Paul Canavese"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "cucumber", ">= 0"
+    gem.add_development_dependency "nokogiri", ">= 1.3.3"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -54,4 +55,16 @@ Rake::RDocTask.new do |rdoc|
   rdoc.title = "randomizer #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+#require File.join(File.dirname(__FILE__), 'lib', 'tasks', 'randomizer.rake')
+
+namespace :randomizer do
+
+  desc "Test generating a random avatar URL"
+  task :avatar do
+    require File.join(File.dirname(__FILE__), 'lib', 'randomizer.rb')
+    puts RandomUser.new.avatar_url
+  end
+
 end
