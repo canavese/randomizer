@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
      "lib/randomizer/markov_text_generator.rb",
      "lib/randomizer/name_generator.rb",
      "lib/randomizer/random_user.rb",
+     "lib/tasks/randomizer.rb",
      "randomizer.gemspec",
      "spec/randomizer_spec.rb",
      "spec/spec.opts",
