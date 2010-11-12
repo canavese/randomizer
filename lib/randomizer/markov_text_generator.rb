@@ -23,7 +23,7 @@ class MarkovTextGenerator
     for word in words
       if prev1 != '' && prev2 != ''
         key = [prev2, prev1]
-        if @dict.key?(key):
+        if @dict.key?(key)
           @dict[key] << word
         else
           @dict[key] = [word]
